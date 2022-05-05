@@ -1,4 +1,12 @@
-﻿<# Section 1
+﻿<#I need to delete the CSV file if it exists otherwise it will append a whole bunch of duplicate rows #>
+$Filename = "C:\FPL\PLayerDataLoopTest.csv"
+If (Test-Path $Filename ) {
+Remove-Item -Path $Filename
+}
+
+
+
+<# Section 1
  This first section makes a call to the bootstrap API which will give you highlevel summary information for the players
  We use this to get a list of the player IDs that we can then pass into a loop to write out a detailed season history 
  into a CSV file
